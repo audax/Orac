@@ -1,4 +1,4 @@
-#N canvas 1050 266 1753 953 10;
+#N canvas 163 91 1753 953 10;
 #X obj 304 186 r notesIn-\$1;
 #X obj 304 491 s notesOut-\$1;
 #X obj 23 9 r loaddefs-\$1;
@@ -16,7 +16,7 @@
 #X msg 575 105 1;
 #X text 535 62 always running. mute incoming BPM to turn off in other
 Modules;
-#N canvas 644 340 1279 996 metro 0;
+#N canvas 637 50 1279 996 metro 0;
 #X obj 217 164 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X floatatom 375 164 5 0 0 0 - - -, f 5;
@@ -183,7 +183,7 @@ Modules;
 #X obj 953 172 r master-ticks;
 #X text 256 867 separate BPM midi \, LINK \, and internal for display
 purposes;
-#N canvas 1449 728 815 554 LINK 0;
+#N canvas 840 321 815 554 LINK 0;
 #X msg 355 126 tempo \$1;
 #X msg 144 127 resolution \$1;
 #X msg 247 147 reset \$1 \$2;
@@ -218,11 +218,13 @@ purposes;
 #X obj 32 12 r loadbang-\$1;
 #X obj 31 38 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
+#X obj 142 373 outlet;
 #X connect 0 0 9 0;
 #X connect 1 0 9 0;
 #X connect 2 0 9 0;
 #X connect 3 0 2 0;
 #X connect 5 0 18 0;
+#X connect 6 0 32 0;
 #X connect 7 0 25 0;
 #X connect 8 0 14 0;
 #X connect 9 0 6 0;
@@ -269,6 +271,7 @@ use internal or MIDI clock if present.;
 #X obj 851 465 spigot 0;
 #X obj 915 418 r c_midiout-\$1;
 #X text 849 398 midi clock output;
+#X obj 414 454 s master-beats;
 #X connect 0 0 4 0;
 #X connect 0 0 36 1;
 #X connect 1 0 33 0;
@@ -298,8 +301,9 @@ use internal or MIDI clock if present.;
 #X connect 29 0 15 0;
 #X connect 29 0 16 0;
 #X connect 29 0 24 0;
-#X connect 31 0 36 0;
-#X connect 31 1 40 0;
+#X connect 31 0 51 0;
+#X connect 31 1 36 0;
+#X connect 31 2 40 0;
 #X connect 33 0 7 0;
 #X connect 34 0 35 0;
 #X connect 36 0 43 0;
@@ -328,7 +332,7 @@ beats in a measure to use in other modules;
 #X obj 181 35 print loaded:clock into \$1, f 35;
 #X text 1156 413 update row 5 only if active module;
 #X obj 679 121 r c_bpm-\$1;
-#X msg 636 627 Tempo 71 BPM;
+#X msg 636 627 Tempo 88 BPM;
 #X msg 490 541 set Tempo \$1 BPM MIDI \;;
 #X msg 672 541 set Tempo \$1 BPM \;;
 #X msg 803 541 set Tempo \$1 BPM LINK \;;

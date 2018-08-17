@@ -1,4 +1,4 @@
-#N canvas 73 398 1464 696 10;
+#N canvas 258 293 1464 696 10;
 #X obj 304 186 r notesIn-\$1;
 #X obj 301 612 s notesOut-\$1;
 #X obj 23 9 r loaddefs-\$1;
@@ -22,11 +22,11 @@
 #X obj 821 95 vsl 15 128 0 127 0 0 empty empty map_x 0 -10 0 10 -262144
 -1 -1 0 1;
 #X obj 718 95 vsl 15 128 0 100 0 0 empty empty hihat 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3175 1;
 #X obj 638 95 vsl 15 128 0 100 0 0 empty empty snare 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3175 1;
 #X obj 549 94 vsl 15 128 0 100 0 0 empty empty bass 0 -9 0 10 -262144
--1 -1 6133 1;
+-1 -1 3175 1;
 #X obj 549 242 * 1.27;
 #X obj 638 242 * 1.27;
 #X obj 718 242 * 1.27;
@@ -43,21 +43,36 @@
 #X obj 550 304 grids, f 38;
 #X msg 540 407 60 \$1;
 #X obj 430 29 r master-ticks;
-#N canvas 789 387 588 535 32nds 0;
-#X obj 125 33 inlet;
-#X obj 127 359 outlet;
-#X obj 125 54 % 3;
-#X obj 126 88 sel 0;
-#X obj 126 109 f;
-#X obj 128 236 % 32;
-#X obj 171 150 + 1;
-#X connect 0 0 2 0;
+#N canvas 1000 323 623 535 32nds 1;
+#X obj 58 48 inlet;
+#X obj 68 309 outlet;
+#X obj 64 131 % 3;
+#X obj 65 165 sel 0;
+#X obj 68 203 f;
+#X obj 68 255 % 32;
+#X obj 110 227 + 1;
+#X obj 114 43 sel 0;
+#X obj 115 68 1;
+#X obj 76 94 spigot;
+#X obj 68 280 + 1;
+#X obj 114 16 inlet;
+#X text 170 16 Master beats inlet;
+#X text 159 83 Sends always 1 after finding the start of the beat This
+starts the counter on the start of a measure;
+#X text 109 267 Apparently the grids module counts from 1 to 32 and
+not 0 to 31, f 63;
+#X connect 0 0 9 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 6 0;
 #X connect 4 0 5 0;
-#X connect 5 0 1 0;
+#X connect 5 0 10 0;
 #X connect 6 0 4 1;
+#X connect 7 0 8 0;
+#X connect 8 0 9 1;
+#X connect 9 0 2 0;
+#X connect 10 0 1 0;
+#X connect 11 0 7 0;
 #X restore 436 83 pd 32nds;
 #X msg 553 528 60 0;
 #X obj 553 490 del;
@@ -95,6 +110,7 @@
 #X msg 760 531 63 0;
 #X msg 829 532 64 0;
 #X msg 897 533 65 0;
+#X obj 450 51 r master-beats;
 #X connect 0 0 1 0;
 #X connect 2 0 6 0;
 #X connect 2 0 5 0;
@@ -170,3 +186,4 @@
 #X connect 66 0 1 0;
 #X connect 67 0 1 0;
 #X connect 68 0 1 0;
+#X connect 69 0 38 1;
